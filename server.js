@@ -5,8 +5,9 @@ config()
 
 const PORT = process.env.PORT || 3001
 
-dbConnect();
 
-app.listen(PORT, ()=>{
+
+app.listen(PORT, async ()=>{
+    await dbConnect();
     console.log(`Server is running on ${PORT}`)
-});
+}); 

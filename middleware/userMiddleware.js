@@ -21,8 +21,8 @@ const signupValidator = (req, res, next)=>{
 }
 
 const loginValidator = (req, res, next)=>{
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { username, password } = req.body;
+    if (!username || !password) {
         return res.status(400).json({
             success: false,
             message: 'Every field is mandatory'
@@ -33,9 +33,10 @@ const loginValidator = (req, res, next)=>{
 
 const jwtAuth = (req, res, next) => {
     const token = req.cookies.token;
+    
   
     if (!token) {
-      return res.status(401).send({ msg: "Not Aurthorised" });
+      return res.status(404).send({ msg: "Not Aurthorised" });
     }
   
     try {
@@ -43,7 +44,7 @@ const jwtAuth = (req, res, next) => {
       req.user = decoded;
       next();
     } catch (error) {
-      return res.status(401).send({ msg: error.message });
+      return res.status(404).send({ msg: error.message });
     }
   };
   

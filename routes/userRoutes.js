@@ -13,4 +13,4 @@ userRouter.post("/v1/user/login", loginValidator, login)
 userRouter.get("/v1/user/logout", logout)
 userRouter.get("/v1/user/profile", jwtAuth, profile)
 
-export default userRouter;
+export default userRouter; 
